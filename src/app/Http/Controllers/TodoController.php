@@ -15,6 +15,11 @@ class TodoController extends Controller //extendsは継承の関数。ここで�
         
         return view('todo.index', ['todos' => $todos]);
     }
+
+    public function create() //新規作成の画面
+    {
+        return view('todo.create'); //URL　todoのcreate
+    }
 }
 
 //SERECT INSERT D UPDATE
