@@ -23,12 +23,12 @@ class TodoController extends Controller //extendsは継承の関数。ここで�
 
     public function store(Request $request) //$requestにRequestクラスのインスタンスを代入.メソッドインジェクション（自動でインスタンス化）
     {
-        $content = $request->input('content');
+        $inputs = $request->all(); //一括で取得　token,contentで返す
 
         // 1. todosテーブルの1レコードを表すTodoクラスをインスタンス化
         $todo = new Todo();
         // 2. Todoインスタンスのカラム名のプロパティに保存したい値を代入
-        $todo->content = $content;
+        $todo->fill($inputs);
         // 3. Todoインスタンスの`->save()`を実行してオブジェクトの状態をDBに保存するINSERT文を実行
         $todo->save();
 
